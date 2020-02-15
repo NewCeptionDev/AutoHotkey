@@ -50,3 +50,13 @@ F2::                                                                            
     Run, "C:\Program Files (x86)\NZXT\CAM\CAM_V3.exe"
     return
 #IF
+
+; Google Search highlighted text
+^!c::
+{
+ Send, ^c
+ Sleep 50
+ Run, http://www.google.com/search?q=%clipboard%
+ Return
+}
+
