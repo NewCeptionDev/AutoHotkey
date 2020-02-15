@@ -7,7 +7,9 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Menu, Tray, Icon, shell32.dll, 73 ;this changes the icon into a little laptop thingy. just useful for making it distinct from the others.
 #singleinstance force ;so you can only run 1 script at a time and it doens't bother you about it.
-SetCapsLockState, AlwaysOff ; Disable Capslock
+
+SetNumlockState, AlwaysOn
+SetCapsLockState, AlwaysOff
 ; HEADER END
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,21 +46,7 @@ F2::                                                                            
     }
     return
 
-^I::                                                                                                ; Starts IntelliJ
-   Process,Exist, idea64.exe ; Sets errorlevel to process PID
-   if (errorlevel == 0){
-       Run, "D:\IntelliJ\IntelliJ IDEA 2018.3.1\bin\idea64.exe"
-   }
-   return
-
-^M::                                                                                                ; Starts IntelliJ
-   Process,Exist, OUTLOOK.exe ; Sets errorlevel to process PID
-   if (errorlevel == 0){
-       Run, "C:\Program Files (x86)\Microsoft Office\root\Office16\OUTLOOK.EXE"
-   }
-   return
-
-^O::
-    Run, "C:\Users\juliu\Documents\QuickGameLaunch\QuickGameLaunch.jar"
+^C::
+    Run, "C:\Program Files (x86)\NZXT\CAM\CAM_V3.exe"
     return
 #IF
