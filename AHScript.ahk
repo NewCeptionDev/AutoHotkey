@@ -1,16 +1,15 @@
-﻿; NEWCEPTIONDEV'S SCRIPT
+﻿; NewCeptionDev's AutoHotkey Scripts
+; These Scripts contain small enhancements and shortcuts
+; Many Enhancements and Shortcuts are based on https://github.com/sebinside/AutoHotkeyScripts
 
-; HEADER START
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-Menu, Tray, Icon, shell32.dll, 73 ;this changes the icon into a little laptop thingy. just useful for making it distinct from the others.
+Menu, Tray, Icon, shell32.dll, 73 ; this changes the icon
 #singleinstance force ;so you can only run 1 script at a time and it doens't bother you about it.
-
 SetNumlockState, AlwaysOn
 SetCapsLockState, AlwaysOff
-; HEADER END
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -20,7 +19,7 @@ SetCapsLockState, AlwaysOff
 
 #IF, GetKeyState("Capslock", "P")
 F1::																								; Open my Autohotkey Script Folder
-	autohotkeyfilepath := "C:\Users\" . A_UserName . "\Dropbox\Autohotkey"
+	autohotkeyfilepath := "D:\Autohotkey"
 	Run, %autohotkeyfilepath%
 	return
 
@@ -46,7 +45,56 @@ F2::                                                                            
     }
     return
 
-^C::
-    Run, "C:\Program Files (x86)\NZXT\CAM\CAM_V3.exe"
-    return
+Q::
+	Send ``
+	Send ``
+	Send {Left}
+	return
+
+T::
+	Send \
+	return
+
+
+E::
+	Send, [
+	return
+
+R::
+	Send, ]
+	return
+
+D::
+  Send, {{}
+  return
+
+F::
+  Send, {}}
+  return
+
+C::
+	callChrome()
+	return
+
 #IF
+
+; Shift + Wheel scrolles left / right
+#IfWinNotActive Minecraft
++WheelDown::WheelRight
++WheelUp::WheelLeft
+#IfWinNotActive
+
+; Overwrites the apostrophe key to be actually usefull without dumb extra key presses
+SC00D::
+ String := "`` "
+ SendRaw %String%
+return
+
+callChrome() {
+	IfWinNotExist, ahk_exe chrome.exe
+			Run, chrome.exe
+		if WinActive("ahk_exe chrome.exe")
+			Send ^{tab}
+		else
+			WinActivate ahk_exe chrome.exe
+}
