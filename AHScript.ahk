@@ -90,6 +90,30 @@ SC00D::
  SendRaw %String%
 return
 
+#!7::
+WinGet, active_name, ProcessName, A
+clipboard := active_name
+tooltip %active_name%
+sleep 1500
+tooltip
+return
+
+#!8::
+inputbox, pse, Ps-Box, Kill Process w/ .exe
+if errorlevel = 1
+{
+pse := clipboard
+}
+else pse := pse
+While WinExist("ahk_exe " pse)
+{
+process, close, %pse%
+}
+tooltip %pse% closed
+sleep, 1000
+tooltip
+return
+
 callChrome() {
 	IfWinNotExist, ahk_exe chrome.exe
 			Run, chrome.exe
