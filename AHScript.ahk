@@ -6,7 +6,7 @@
 #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-Menu, Tray, Icon, shell32.dll, 73 ; this changes the icon
+Menu, Tray, Icon, shell32.dll, 72 ; this changes the icon
 #singleinstance force ;so you can only run 1 script at a time and it doens't bother you about it.
 SetNumlockState, AlwaysOn
 SetCapsLockState, AlwaysOff
@@ -113,6 +113,14 @@ tooltip %pse% closed
 sleep, 1000
 tooltip
 return
+
+; Fancy new windows 11 feature aka open old context menu lol
+#IfWinActive ahk_exe explorer.exe
++RButton::
+	Send {Click}
+	Send +{F10}
+return
+#IfWinActive
 
 callChrome() {
 	IfWinNotExist, ahk_exe chrome.exe
