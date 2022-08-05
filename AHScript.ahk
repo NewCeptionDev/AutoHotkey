@@ -84,6 +84,10 @@ C::
 +WheelUp::WheelLeft
 #IfWinNotActive
 
+#IfWinActive Rainbow Six
+!Tab::return			; Disable Alt Tab.
+#IfWinActive
+
 ; Overwrites the apostrophe key to be actually usefull without dumb extra key presses
 SC00D::
  String := "`` "
