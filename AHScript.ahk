@@ -11,6 +11,9 @@ Menu, Tray, Icon, shell32.dll, 72 ; this changes the icon
 SetNumlockState, AlwaysOn
 SetCapsLockState, AlwaysOff
 
+GroupAdd, GAMES, Minecraft
+GroupAdd, GAMES, Counter-Strike: Global Offensive - Direct3D 9
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; #############################################################################################################################################
@@ -79,7 +82,7 @@ C::
 #IF
 
 ; Shift + Wheel scrolles left / right
-#IfWinNotActive Minecraft
+#IfWinNotActive ahk_group GAMES
 +WheelDown::WheelRight
 +WheelUp::WheelLeft
 #IfWinNotActive
